@@ -90,18 +90,43 @@ void patterns(int n)
 
     // 9.
 
-    for(int i=1;i<=n;i++){
-        int start=1;
-        if(i%2==0){
-            start=0;
+    // for(int i=1;i<=n;i++){
+    //     int start=1;
+    //     if(i%2==0){
+    //         start=0;
 
-        }
-        // else{
-        //     start=0;
-        // }
+    //     }
+    //     // else{
+    //     //     start=0;
+    //     // }
+    //     for(int j=1;j<=i;j++){
+    //         cout<<start;
+    //         start=1-start;
+    //     }
+    //     cout<<endl;
+    // }
+    
+    // 10.
+    // for(int i=1;i<=n;i++){
+    //     for(int j=1;j<=i;j++){
+    //         cout<<j;
+    //     }
+    //     for(int j=1;j<=2*n-2*i;j++){
+    //         cout<<" ";
+    //     }
+    //     for(int j=i;j>=1;j--){
+    //         cout<<j;
+    //     }
+    //     cout<<endl;
+
+    // }
+
+    // 11.
+    int num=1;
+    for(int i=1;i<=n;i++){
         for(int j=1;j<=i;j++){
-            cout<<start;
-            start=1-start;
+            cout<<num<<" ";
+            num++;
         }
         cout<<endl;
     }
