@@ -3,7 +3,7 @@ using namespace std;
 
 void patterns(int n)
 {
-// 1.
+    // 1.
     // for (int i = 0; i < n; i++)
     // {
 
@@ -39,7 +39,7 @@ void patterns(int n)
     //     cout<<endl;
     //  }
 
-// 5.
+    // 5.
     // for(int i=1;i<=n;i++){
     //     for(int j=1;j<=n-i+1;j++){
     //         cout<<j;
@@ -110,6 +110,14 @@ void patterns(int n)
     // for(int i=1;i<=n;i++){
     //     for(int j=1;j<=i;j++){
     //         cout<<j;
+
+
+    // 10.
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int j = 1; j <= i; j++)
+    //     {
+    //         cout << j;
     //     }
     //     for(int j=1;j<=2*n-2*i;j++){
     //         cout<<" ";
@@ -122,19 +130,100 @@ void patterns(int n)
     // }
 
     // 11.
-    int num=1;
-    for(int i=1;i<=n;i++){
-        for(int j=1;j<=i;j++){
-            cout<<num<<" ";
-            num++;
+    // int num=1;
+    // for(int i=1;i<=n;i++){
+    //     for(int j=1;j<=i;j++){
+    //         cout<<num<<" ";
+    //         num++;
+
+    // }
+
+
+    // 11.
+    // for(int i=0;i<n;i++){
+    //     for(char ch='A';ch<='A'+i;ch++){
+    //         cout<<ch;
+    //     }
+    //     cout<<endl;
+    // }
+
+    // 12.
+
+    // for(int i=0;i<n;i++){
+    //     for(char ch='A';ch<='A'+n-i-1;ch++){
+    //         cout<<ch;
+    //     }
+    //     cout<<endl;
+    // }
+    // 13.
+    // for(int i=0;i<n;i++){
+    //     char ch='A'+i;
+    //     for(int j=0;j<=i;j++){
+    //         cout<<ch;
+    //     }
+    //     cout<<endl;
+    // }
+    // 14.
+    // for(int i=0;i<n;i++){
+    //     for(char ch='E'-i;ch<='E';ch++){
+    //         cout<<ch;
+    //     }
+    //     cout<<endl;
+    // }
+    // 15.
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n-i;j++){
+    //         cout<<"*";
+    //     }
+    //     for(int j=0;j<i+i;j++){
+    //         cout<<" ";
+    //     }
+    //     for(int j=0;j<n-i;j++){
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+        
+    // }
+    // for(int i=0;i<n;i++){
+    //    for(int j=0;j<i;j++){
+    //         cout<<"*";
+    //     }
+    //     for(int j=0;j<2*n-2*i;j++){
+    //         cout<<" ";
+    //     }
+    //     for(int j=0;j<i;j++){
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+        
+    // }
+
+    // 16.
+    
+    for(int i=1;i<=2*n-1;i++){
+        int stars=i;
+        if(i>n)stars=2*n-i;
+        int space=2*n-2*i;
+        if(i>n)space=2*i-2*n;
+
+        
+        for(int j=0;j<stars;j++){
+            cout<<"*";
+        }
+        for(int j=0;j<space;j++){
+            cout<<" ";
+        }
+        for(int j=0;j<stars;j++){
+            cout<<"*";
         }
         cout<<endl;
     }
 
 }
 
-int main()
-{
+
+
+int main(){
     int n;
     cout << "Enter the size:";
     cin >> n;
