@@ -62,7 +62,7 @@ void mergee(int arr[], int low, int mid, int high)
     int right = mid + 1;
     while (left <= mid && right <= high)
     {
-        if (arr[left] > arr[right])
+        if (arr[left] < arr[right])
         {
             temp.push_back(arr[left]);
             left++;
@@ -83,19 +83,23 @@ void mergee(int arr[], int low, int mid, int high)
         temp.push_back(arr[right]);
         right++;
     }
-    for(int i=low;i<high;i++){
+    for(int i=low;i<=high;i++){
         arr[i]=temp[i-low];
     }
 }
-int mergesort(int arr[], int low, int high)
+void mergesort(int arr[], int low, int high)
 {
-    int mid = high + low / 2;
+    if(low>=high)return;
+    int mid = (high + low) / 2;
     mergesort(arr, low, mid);
     mergesort(arr, mid + 1, high);
     mergee(arr, low, mid, high);
 }
 void ms(int arr[],int n){
     mergesort(arr,0,n-1);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
 }
 int main()
 {
