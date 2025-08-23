@@ -61,13 +61,48 @@ else return false;
        return i+1;
     }
 
+    void leftRotateOne(vector<int>&arr,int n){
+        int temp=arr[0];
+        for(int i=1;i<n;i++){
+            arr[i-1]=arr[i];
+        }
+        arr[n-1]=temp;
+    }
+
+    void leftrotatebyD(vector<int>&arr,int n,int d){
+
+        vector<int>temp(d);
+        for(int i=0;i<d;i++){
+            temp[i]=arr[i];
+        }
+
+        for(int i=d;i<n;i++){
+            arr[i-d]=arr[i];
+        }
+        int j=0;
+        for(int i=n-d;i<=n;i++){
+            arr[i]=temp[j];
+            j++;
+        }
+
+    }
+    lef
+    
+
 int main(){
     int n;
     cout<<"Enter size:";
     cin>>n;
+    int d;
+    cout<<"Enter the numbers of rotations:";
+    cin>>d;
     vector<int>arr(n);
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    cout<<remove_duplicates(arr,n);
+    leftrotatebyD(arr,n,d);
+    for(auto it:arr){
+        cout<<it<<" ";
+    }
+
 }
