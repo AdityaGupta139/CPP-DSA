@@ -1,147 +1,239 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void largest(vector<int>arr,int n){
-// brute
+void largest(vector<int> arr, int n)
+{
+    // brute
 
     // sort(arr.begin(),arr.end());
 
     // cout<<arr[n-1];
 
-// optimal
+    // optimal
 
-int largest=0;
-for(int i=0;i<n;i++){
-    if(arr[i]>arr[largest]){
-        largest=i;
+    int largest = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] > arr[largest])
+        {
+            largest = i;
+        }
     }
-
-}
-cout<<arr[largest];
-
+    cout << arr[largest];
 }
 
 // second largest
-int second_largest(vector<int>arr,int n){
-    int largest=arr[0];
-    int sl=-1;
-    for(int i=0;i<n;i++){
-if(arr[i]>largest){
- sl=largest;
- largest=arr[i];   
-}
-else if(arr[i] < largest && arr[i]>sl ){
-    sl=arr[i];
-}
+int second_largest(vector<int> arr, int n)
+{
+    int largest = arr[0];
+    int sl = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] > largest)
+        {
+            sl = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] < largest && arr[i] > sl)
+        {
+            sl = arr[i];
+        }
     }
-    cout<<sl;
+    cout << sl;
     return 0;
 }
 
 // check_sorted
-bool check_sorted(vector<int>arr,int n){
-for(int i=1;i<n;i++){
-if(arr[i-1]<=arr[i]){
-    return true;
+bool check_sorted(vector<int> arr, int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i - 1] <= arr[i])
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 }
-else return false;
 
-}
-
-}
-
-    int removeDuplicates(vector<int>& arr) {
-       int i=0;
-       for(int j=1;j<arr.size();j++){
-        if(arr[j]!=arr[i]){
-            arr[i+1]=arr[j];
+int removeDuplicates(vector<int> &arr)
+{
+    int i = 0;
+    for (int j = 1; j < arr.size(); j++)
+    {
+        if (arr[j] != arr[i])
+        {
+            arr[i + 1] = arr[j];
             i++;
         }
-       } 
-       return i+1;
+    }
+    return i + 1;
+}
+
+void leftRotateOne(vector<int> &arr, int n)
+{
+    int temp = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        arr[i - 1] = arr[i];
+    }
+    arr[n - 1] = temp;
+}
+
+void leftrotatebyD(vector<int> &arr, int n, int d)
+{
+
+    vector<int> temp(d);
+    for (int i = 0; i < d; i++)
+    {
+        temp[i] = arr[i];
     }
 
-    void leftRotateOne(vector<int>&arr,int n){
-        int temp=arr[0];
-        for(int i=1;i<n;i++){
-            arr[i-1]=arr[i];
+    for (int i = d; i < n; i++)
+    {
+        arr[i - d] = arr[i];
+    }
+    int j = 0;
+    for (int i = n - d; i <= n; i++)
+    {
+        arr[i] = temp[j];
+        j++;
+    }
+}
+void MovezeroestoEnd(vector<int> &arr, int n)
+{
+    vector<int> temp;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
+            temp.emplace_back(arr[i]);
         }
-        arr[n-1]=temp;
+    }
+    for (int i = 0; i < temp.size(); i++)
+    {
+        arr[i] = temp[i];
+    }
+    int nz = temp.size();
+    for (int i = nz; i < n; i++)
+    {
+        arr[i] = 0;
+    }
+}
+
+void MovezeroestoEndOptimal(vector<int> &arr, int n)
+{
+    int j = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == 0)
+        {
+            j = i;
+            break;
+        }
+    }
+}
+
+int LinearSearch(vector<int> arr, int n, int num)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == num)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Union(vector<int> a, vector<int> b, int n, int m)
+{
+    set<int> st;
+
+    for (int i = 0; i < n; i++)
+    {
+        st.insert(a[i]);
+    }
+    for (int i = 0; i < m; i++)
+    {
+        st.insert(b[i]);
     }
 
-    void leftrotatebyD(vector<int>&arr,int n,int d){
+    for (auto it : st)
+    {
+        cout << it << " ";
+    }
+}
 
-        vector<int>temp(d);
-        for(int i=0;i<d;i++){
-            temp[i]=arr[i];
+vector<int> UnionOPtimal(vector<int> a, vector<int> b)
+{
+    int n = a.size();
+    int m = b.size();
+    int i, j = 0;
+    vector<int> unionarr;
+    while (i < n && j < m)
+    {
+        if (a[i] <= b[j])
+        {
+            if (unionarr.size() == 0 || unionarr.back() != a[i])
+            {
+                unionarr.push_back(a[i]);
+            }
+            i++;
         }
-
-        for(int i=d;i<n;i++){
-            arr[i-d]=arr[i];
-        }
-        int j=0;
-        for(int i=n-d;i<=n;i++){
-            arr[i]=temp[j];
+        else
+        {
+            if (unionarr.size() == 0 || unionarr.back() != b[j])
+            {
+                unionarr.push_back(b[j]);
+            }
             j++;
         }
-
-    }
-    void MovezeroestoEnd(vector<int>&arr,int n){
-        vector<int>temp;
-        for(int i=0;i<n;i++){
-            if(arr[i]!=0){
-                temp.emplace_back(arr[i]);
+        while (j < m)
+        {
+            if (unionarr.size() == 0 || unionarr.back() != b[j])
+            {
+                unionarr.push_back(b[j]);
             }
+            j++;
         }
-        for(int i=0;i<temp.size();i++){
-            arr[i]=temp[i];
-        }
-        int nz=temp.size();
-        for(int i=nz;i<n;i++){
-            arr[i]=0;
+        while (i < n)
+        {
+            if (unionarr.size() == 0 || unionarr.back() != a[i])
+            {
+                unionarr.push_back(a[i]);
+            }
+            i++;
         }
     }
-    
-    void MovezeroestoEndOptimal(vector<int>&arr,int n){
-int j=-1;
-for(int i=0;i<n;i++){
-    if(arr[i]==0){
-        j=i;
-        break;
-    }
-
 }
+missi
 
-    }
-
-    int LinearSearch(vector<int>arr,int n,int num){
-for(int i=0;i<n;i++){
-    if(arr[i]==num){
-return i;
-    }
-   
-    
-}
-return -1;
-
-    }
-
-int main(){
+int main()
+{
     int n;
-    cout<<"Enter size:";
-    cin>>n;
-    int num;
-    cout<<"Enter the no.";
-    cin>>num;
-
-
-    vector<int>arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
+    cout << "Enter size of 1st array:";
+    cin >> n;
+    vector<int> a(n);
+    cout << "Enter Elements of 1st Array:";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
     }
-    cout<<LinearSearch(arr,n,num);
+    int m;
+
+    cout << "Enter size of 2nd array:";
+    cin >> m;
+    vector<int> b(m);
+    cout << "Enter Elements of 2nd Array:";
+    for (int i = 0; i < m; i++)
+    {
+        cin >> b[i];
+    }
+
+    Union(a, b, n, m);
     // for(auto it:arr){
     //     cout<<it<<" ";
     // }
-
 }
