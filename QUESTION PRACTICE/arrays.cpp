@@ -86,23 +86,62 @@ else return false;
         }
 
     }
-    Movezeroes
+    void MovezeroestoEnd(vector<int>&arr,int n){
+        vector<int>temp;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                temp.emplace_back(arr[i]);
+            }
+        }
+        for(int i=0;i<temp.size();i++){
+            arr[i]=temp[i];
+        }
+        int nz=temp.size();
+        for(int i=nz;i<n;i++){
+            arr[i]=0;
+        }
+    }
     
+    void MovezeroestoEndOptimal(vector<int>&arr,int n){
+int j=-1;
+for(int i=0;i<n;i++){
+    if(arr[i]==0){
+        j=i;
+        break;
+    }
+
+}
+
+    }
+
+    int LinearSearch(vector<int>arr,int n,int num){
+for(int i=0;i<n;i++){
+    if(arr[i]==num){
+return i;
+    }
+   
+    
+}
+return -1;
+
+    }
 
 int main(){
     int n;
     cout<<"Enter size:";
     cin>>n;
-    int d;
-    cout<<"Enter the numbers of rotations:";
-    cin>>d;
+    int num;
+    cout<<"Enter the no.";
+    cin>>num;
+
+
     vector<int>arr(n);
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    leftrotatebyD(arr,n,d);
-    for(auto it:arr){
-        cout<<it<<" ";
-    }
+    cout<<LinearSearch(arr,n,num);
+    // for(auto it:arr){
+    //     cout<<it<<" ";
+    // }
 
 }
