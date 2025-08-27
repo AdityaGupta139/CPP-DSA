@@ -208,16 +208,47 @@ vector<int> UnionOPtimal(vector<int> a, vector<int> b)
         }
     }
 }
-    int missingNumber(vector<int>& nums) {
-        int n=nums.size();
-        int sum=n*(n+1)/2;
-        int s2=0;
-        for(int i=0;i<n;i++){
-            s2=nums[i]+s2;
-
-        }
-        return (sum-s2);
+int missingNumber(vector<int> &nums)
+{
+    int n = nums.size();
+    int sum = n * (n + 1) / 2;
+    int s2 = 0;
+    for (int i = 0; i < n; i++)
+    {
+        s2 = nums[i] + s2;
     }
+    return (sum - s2);
+}
+int findMaxConsecutiveOnes(vector<int> &arr)
+{
+    int n = arr.size();
+    int cnt = 0;
+    int mxcnt;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == 1)
+        {
+            cnt++;
+            mxcnt = max(mxcnt, cnt);
+        }
+        else
+        {
+            cnt = 0;
+        }
+    }
+    return mxcnt;
+}
+
+int singleNumber(vector<int> &nums)
+{
+    int XOR = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        XOR = XOR ^ nums[i];
+    }
+    return XOR;
+}
+
 
 int main()
 {
