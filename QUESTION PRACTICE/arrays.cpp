@@ -248,6 +248,7 @@ int singleNumber(vector<int> &nums)
     }
     return XOR;
 }
+// 
 
 
 int main()
