@@ -248,7 +248,7 @@ int singleNumber(vector<int> &nums)
     }
     return XOR;
 }
-// 
+// jftf
 
 
 int main()
