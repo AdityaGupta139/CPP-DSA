@@ -249,22 +249,63 @@ int singleNumber(vector<int> &nums)
     return XOR;
 }
 
-    vector<int> twoSum(vector<int>& arr, int target) {
-        int n=arr.size();
-        vector<int>ans;
+vector<int> twoSum(vector<int> &arr, int target)
+{
+    int n = arr.size();
+    vector<int> ans;
+    map<int, int> mpp;
+    for (int i = 0; i < n; i++)
+    {
+        int a = arr[i];
+        int more = target - a;
+        if (mpp.find(more) != mpp.end())
+        {
+            ans.push_back(mpp[more]);
+            ans.push_back(i);
+        }
+        mpp[a] = i;
+    }
+
+    return ans;
+}
+void sortColors(vector<int> &nums)
+{
+    int n = nums.size();
+    int low = 0;
+    int mid = 0;
+    int high = n - 1;
+    while (mid <= high)
+    {
+        if (nums[mid] == 0)
+        {
+            swap(nums[mid], nums[low]);
+            mid++;
+            low++;
+        }
+        else if (nums[mid] == 1)
+        {
+
+            mid++;
+        }
+        else if (nums[mid] == 2)
+        {
+            swap(nums[mid], nums[high]);
+            high--;
+        }
+    }
+}
+int majorityElement(vector<int>& nums) {
+        int n=nums.size();
         map<int,int>mpp;
         for(int i=0;i<n;i++){
-            int a=arr[i];
-            int more=target-a;
-            if(mpp.find(more)!=mpp.end()){
-                ans.push_back(mpp[more]);
-                ans.push_back(i);
-            }
-            mpp[a]=i;
+            mpp[nums[i]]++;
         }
-        
-       return ans;
-        
+        for(auto it:mpp){
+            if(it.second>n/2){
+                return it.first;
+            }
+        }
+        return -1;
     }
 
 int main()
