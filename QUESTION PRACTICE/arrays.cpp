@@ -307,7 +307,21 @@ int majorityElement(vector<int>& nums) {
         }
         return -1;
     }
-
+    int maxSubArray(vector<int>& nums) {
+        int n=nums.size();
+        int sum=0;
+        int maxsum=INT_MIN;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            if(sum>maxsum){
+                maxsum=sum;
+            }
+            if(sum<0){
+sum=0;
+            }
+        }
+        return maxsum;
+    }
 int main()
 {
     int n;
