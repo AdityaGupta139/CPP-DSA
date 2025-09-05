@@ -208,14 +208,14 @@ vector<int> UnionOPtimal(vector<int> a, vector<int> b)
         }
     }
 }
-int missingNumber(vector<int> &nums)
+int missingNumber(vector<int> &a)
 {
-    int n = nums.size();
+    int n = a.size();
     int sum = n * (n + 1) / 2;
     int s2 = 0;
     for (int i = 0; i < n; i++)
     {
-        s2 = nums[i] + s2;
+        s2 = a[i] + s2;
     }
     return (sum - s2);
 }
@@ -239,12 +239,12 @@ int findMaxConsecutiveOnes(vector<int> &arr)
     return mxcnt;
 }
 
-int singleNumber(vector<int> &nums)
+int singleNumber(vector<int> &a)
 {
     int XOR = 0;
-    for (int i = 0; i < nums.size(); i++)
+    for (int i = 0; i < a.size(); i++)
     {
-        XOR = XOR ^ nums[i];
+        XOR = XOR ^ a[i];
     }
     return XOR;
 }
@@ -268,37 +268,37 @@ vector<int> twoSum(vector<int> &arr, int target)
 
     return ans;
 }
-void sortColors(vector<int> &nums)
+void sortColors(vector<int> &a)
 {
-    int n = nums.size();
+    int n = a.size();
     int low = 0;
     int mid = 0;
     int high = n - 1;
     while (mid <= high)
     {
-        if (nums[mid] == 0)
+        if (a[mid] == 0)
         {
-            swap(nums[mid], nums[low]);
+            swap(a[mid], a[low]);
             mid++;
             low++;
         }
-        else if (nums[mid] == 1)
+        else if (a[mid] == 1)
         {
 
             mid++;
         }
-        else if (nums[mid] == 2)
+        else if (a[mid] == 2)
         {
-            swap(nums[mid], nums[high]);
+            swap(a[mid], a[high]);
             high--;
         }
     }
 }
-int majorityElement(vector<int>& nums) {
-        int n=nums.size();
+int majorityElement(vector<int>& a) {
+        int n=a.size();
         map<int,int>mpp;
         for(int i=0;i<n;i++){
-            mpp[nums[i]]++;
+            mpp[a[i]]++;
         }
         for(auto it:mpp){
             if(it.second>n/2){
@@ -307,12 +307,12 @@ int majorityElement(vector<int>& nums) {
         }
         return -1;
     }
-    int maxSubArray(vector<int>& nums) {
-        int n=nums.size();
+    int maxSubArray(vector<int>& a) {
+        int n=a.size();
         int sum=0;
         int maxsum=INT_MIN;
         for(int i=0;i<n;i++){
-            sum+=nums[i];
+            sum+=a[i];
             if(sum>maxsum){
                 maxsum=sum;
             }
@@ -323,29 +323,29 @@ sum=0;
         return maxsum;
     }
 
-        vector<int> rearrangeArray(vector<int>& nums) {
-        int n=nums.size();
+        vector<int> rearrangeArray(vector<int>& a) {
+        int n=a.size();
         vector<int>pos;
         vector<int>neg;
         for(int i=0;i<n;i++){
-            if(nums[i]>0){
-                pos.push_back(nums[i]);
+            if(a[i]>0){
+                pos.push_back(a[i]);
             }
             else{
-                neg.push_back(nums[i]);
+                neg.push_back(a[i]);
             }
         }
         for(int i=0;i<n;i++){
             if(i%2==0){
-                nums[i]=pos[i/2];
+                a[i]=pos[i/2];
               
             }
             else{
-                nums[i]=neg[(i-1)/2];
+                a[i]=neg[(i-1)/2];
             }
             
         }
-        return nums;
+        return a;
     }
 
         void nextPermutation(vector<int>& arr) {
@@ -369,30 +369,60 @@ sum=0;
         }
         reverse(arr.begin()+ind+1,arr.end());
     }
+
+ void leaders(vector<int>&a,int n) {
+    //   int n=a.size();
+      vector<int>ans;
+      
+      for(int i=0;i<n;i++){
+        bool leader=true;
+        for(int j=i+1;j<n;j++){
+            if(a[j]>a[i]){
+                leader=false;
+                break;
+            }
+            
+        }
+        
+if(leader==true){
+    ans.push_back(a[i]);
+}
+      }
+
+      for(auto it:ans){
+        cout<<it<<" ";
+    }
+    }
+
+     int longestConsecutive(vector<int>& a,int n) {
+        int maxi=INT_MIN;
+        for(int i=0;i<n;i++){
+            int cnt=0;
+            for(int j=0;j<n;j++){
+                if(a[j]==a[i]+1 || a[j]==a[i]-1){
+                    cnt++;
+                    maxi=max(maxi,cnt);
+                }
+            }
+        }
+        cout<<maxi;
+        return 0;
+
+    }
 int main()
 {
     int n;
     cout << "Enter size of 1st array:";
     cin >> n;
-    vector<int> a(n);
+    vector<int>a(n);
     cout << "Enter Elements of 1st Array:";
+
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    int m;
 
-    cout << "Enter size of 2nd array:";
-    cin >> m;
-    vector<int> b(m);
-    cout << "Enter Elements of 2nd Array:";
-    for (int i = 0; i < m; i++)
-    {
-        cin >> b[i];
-    }
-
-    Union(a, b, n, m);
-    // for(auto it:arr){
-    //     cout<<it<<" ";
-    // }
+   
+    longestConsecutive(a,n);
+    
 }
