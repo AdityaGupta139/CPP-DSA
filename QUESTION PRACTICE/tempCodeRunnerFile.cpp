@@ -1,3 +1,1 @@
-for(auto it:arr){
-    //     cout<<it<<" ";
-    // }
+int n=nums.size();
