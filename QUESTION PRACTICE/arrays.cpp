@@ -370,6 +370,9 @@ sum=0;
         reverse(arr.begin()+ind+1,arr.end());
     }
 
+    // 
+
+
  void leaders(vector<int>&a,int n) {
     //   int n=a.size();
       vector<int>ans;
@@ -409,6 +412,7 @@ if(leader==true){
         return 0;
 
     }
+
         void setZeroes(vector<vector<int>>& matrix) {
         int n=matrix.size();
         int m=matrix[0].size();
@@ -435,6 +439,7 @@ if(leader==true){
     }
 
     //  fsf
+
 int main()
 {
     int n;
