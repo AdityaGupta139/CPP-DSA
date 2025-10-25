@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-void M(vector<int>&arr,int low, int mid,int high){
+void merge(vector<int>&arr,int low, int mid,int high){
     vector<int>temp;
     int left=low;
     int right=mid+1;
@@ -28,14 +28,14 @@ void M(vector<int>&arr,int low, int mid,int high){
     }
 
 }
-void m_sort(vector<int>&arr,int low,int high){
+void merge_sort(vector<int>&arr,int low,int high){
     if(low>=high){
         return;
     }
     int mid=(low+high)/2;
-    m_sort(arr,low,mid);
-    m_sort(arr,mid+1,high);
-    M(arr,low,mid,high);
+    merge_sort(arr,low,mid);
+    merge_sort(arr,mid+1,high);
+    merge(arr,low,mid,high);
 }
 int main(){
     int n;
@@ -46,7 +46,7 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    m_sort(arr,0,n-1);
+    merge_sort(arr,0,n-1);
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
     }
