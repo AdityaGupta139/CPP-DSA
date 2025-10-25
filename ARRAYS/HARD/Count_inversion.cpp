@@ -1,9 +1,10 @@
 #include <bits/stdc++.h> 
-int cnt=0;
-void M(vector<int>&arr,int low, int mid,int high){
+
+int M(vector<int>&arr,int low, int mid,int high){
     vector<int>temp;
     int left=low;
     int right=mid+1;
+    int cnt=0;
     while(left<= mid && right <= high){
         if(arr[left]<=arr[right]){
             temp.emplace_back(arr[left]);
@@ -27,19 +28,22 @@ void M(vector<int>&arr,int low, int mid,int high){
         arr[i]=temp[i-low];
 
     }
+    return cnt;
 
 }
-void m_sort(vector<int>&arr,int low,int high){
+int m_sort(vector<int>&arr,int low,int high){
+    int cnt=0;
     if(low>=high){
-        return;
+        return cnt;
     }
     int mid=(low+high)/2;
-    m_sort(arr,low,mid);
-    m_sort(arr,mid+1,high);
-    M(arr,low,mid,high);
+    cnt+=m_sort(arr,low,mid);
+    cnt+=m_sort(arr,mid+1,high);
+    cnt+=M(arr,low,mid,high);
+    return cnt;
 }
 
 int numberOfInversions(vector<int>&a, int n){
-  m_sort(a,0,n-1);
-  return cnt;
+  return m_sort(a,0,n-1);
+  
 }
