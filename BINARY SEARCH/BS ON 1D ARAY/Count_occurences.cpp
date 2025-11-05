@@ -46,4 +46,4 @@ int count(vector<int>& arr, int n, int x) {
 	vector<int>ans=searchRange(arr,x);
 	if(ans[0]==-1)return 0;
 	return ans[1] - ans[0] + 1;
-}
+}   
